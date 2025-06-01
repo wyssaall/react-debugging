@@ -1,12 +1,26 @@
-# React + Vite
+# react-debugging
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Objective
 
-Currently, two official plugins are available:
+Debug a React app using React Developer Tools by identifying and fixing issues with state and props.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Issues Found
 
-## Expanding the ESLint configuration
+### Undefined State (name)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Found in App component.
+Cause: useState() was used without an initial value.
+Fix it addidng default value:
+const [name, setName] = useState("Wissal");
+
+### Missing Props in ChildComponent
+
+count and setCount were not passed to the child.
+Fix: Updated JSX to pass props:
+<ChildComponent count={count} setCount={setCount} />
+
+## Results
+
+State and props now display correctly in DevTools.
+Button increments count as expected.
+No more undefined values.
